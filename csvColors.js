@@ -4,7 +4,7 @@ var drawChart = function(data){
   var height = 200;
   var width = 400;
   var barWidth = width/data.length
-  var svg = d3.select("#json svg")
+  var svg = d3.select("#csv svg")
             .attr("width", width)
             .attr("height", height);
 
@@ -49,7 +49,7 @@ var drawChart = function(data){
 
 
 
-          var dataP = d3.json("colors.json");
+          var dataP = d3.csv("colors.csv");
 
           dataP.then(function(data){
 

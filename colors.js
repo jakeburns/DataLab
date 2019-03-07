@@ -30,10 +30,19 @@ function(err)
 var drawChart = function(data, name){
   var height = 200;
   var width = 400;
-  var barWidth = width/data.length
-  var svg = d3.select(name)
-            .attr("width", width)
-            .attr("height", height);
+  var svg;
+  var barWidth = (width/data.length)
+  if (name === "#csv"){
+    svg = d3.select("#csv")
+    .attr("width", width)
+    .attr("height", height);
+
+  }
+  else{
+    svg = d3.select("#json")
+    .attr("width", width)
+    .attr("height", height);
+  }
 
   svg.selectAll("rect")
             .data(data)
@@ -52,7 +61,7 @@ var drawChart = function(data, name){
             .attr("fill", function(d){
               return d.color;
             });
-    svg.selectAll(".number text")
+    svg.selectAll("text")
     .data(data)
     .enter()
     .append("text")
